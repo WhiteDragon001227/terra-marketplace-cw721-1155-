@@ -36,7 +36,7 @@ pub trait NonFungibleTokenCore {
         approval_id: u64,
         memo: Option<String>,
         msg: String,
-    ) -> Promise;
+    ) -> PromiseOrValue<bool>;
 
     fn nft_approve(&mut self, token_id: TokenId, account_id: ValidAccountId, msg: Option<String>);
 
@@ -223,7 +223,7 @@ impl NonFungibleTokenCore for Contract {
         approval_id: u64,
         memo: Option<String>,
         msg: String,
-    ) -> Promise {
+    ) -> PromiseOrValue<bool> {
         assert_one_yocto();
         let sender_id = env::predecessor_account_id();
         let previous_token = self.internal_transfer(
@@ -251,7 +251,7 @@ impl NonFungibleTokenCore for Contract {
             &env::current_account_id(),
             NO_DEPOSIT,
             GAS_FOR_RESOLVE_TRANSFER,
-        ))
+        )).into()
     }
 
     #[payable]
