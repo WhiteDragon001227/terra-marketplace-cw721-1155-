@@ -38,11 +38,11 @@ const contract_royalty = 500;
 
 const metadata = {
 	media: 'https://media.giphy.com/media/h2ZVjT3kt193cxnwm1/giphy.gif',
-	issued_at: now.toString()
+	issued_at: now
 };
 const metadata2 = {
 	media: 'https://media.giphy.com/media/laUY2MuoktHPy/giphy.gif',
-	issued_at: now.toString()
+	issued_at: now
 };
 
 /// contractAccount.accountId is the NFT contract and contractAccount is the owner
